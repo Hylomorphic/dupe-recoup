@@ -1,0 +1,54 @@
+name:                dupe-recoup
+version:             0.1.0.0
+github:              "mitchellvitez/dupe-recoup"
+license:             BSD3
+author:              "Mitchell Vitez"
+maintainer:          "mitchell@hylomorphic.tech"
+copyright:           "Mitchell Vitez"
+
+extra-source-files:
+- README.md
+- ChangeLog.md
+
+# Metadata used when publishing your package
+# synopsis:            Short description of your package
+# category:            software
+
+# To avoid duplicated efforts in documentation and dealing with the
+# complications of embedding Haddock markup inside cabal files, it is
+# common to point users to the README.md file.
+description:         Please see the README on Github at <https://github.com/mitchellvitez/dupe-recoup#readme>
+
+dependencies:
+- base >= 4.7 && < 5
+- text
+- array
+- edit-distance
+- csv
+
+library:
+  source-dirs: src
+
+executables:
+  dupe-recoup-exe:
+    main:                Main.hs
+    source-dirs:         app
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - dupe-recoup
+
+tests:
+  dupe-recoup-test:
+    main:                Spec.hs
+    source-dirs:         test
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - dupe-recoup
+    - hspec
+    - QuickCheck
